@@ -1,13 +1,14 @@
-import { ctx1, gameWidth } from './setup.js'
+import { ctx2, gameWidth } from './setup.js'
 import { state } from './data.js'
 
 export default class Obstacle {
-    constructor(x, y, width, height, velocity) {
+    constructor(x, y, width, height, velocity, type) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
         this.velocity = velocity;
+        this.type = type;
     }
 
     update() {
@@ -17,7 +18,7 @@ export default class Obstacle {
     }
 
     draw() {
-        ctx1.fillStyle = 'red';
-        ctx1.fillRect(this.x, this.y, this.width, this.height);
+        this.type === 'CAR' ? ctx2.fillStyle = 'red' : ctx2.fillStyle = 'blue';
+        ctx2.fillRect(this.x, this.y, this.width, this.height);
     }
 }

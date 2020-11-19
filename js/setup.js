@@ -11,7 +11,7 @@ canvas1.width = gameWidth;
 canvas1.height = gameHeight;
 
 const canvas2 = document.getElementById('canvas2');
-const ctx2 = canvas2.getContext('2d');
+export const ctx2 = canvas2.getContext('2d');
 canvas2.width = gameWidth;
 canvas2.height = gameHeight;
 
@@ -21,7 +21,7 @@ canvas3.width = gameWidth;
 canvas3.height = gameHeight;
 
 const canvas4 = document.getElementById('canvas4');
-const ctx4 = canvas4.getContext('2d');
+export const ctx4 = canvas4.getContext('2d');
 canvas4.width = gameWidth;
 canvas4.height = gameHeight;
 

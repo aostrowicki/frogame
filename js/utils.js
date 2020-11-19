@@ -32,12 +32,12 @@ export function generateObstacles() {
 
     const obstacles = [];
     for (let i = 0; i < 2; i++) {
-        obstacles.push(new Obstacle(i * gridSize * 8, lanes.lane1, gridSize, gridSize, -0.5));
-        obstacles.push(new Obstacle(i * gridSize * 4, lanes.lane1, gridSize, gridSize, -0.5));
-        obstacles.push(new Obstacle(i * gridSize * 5, lanes.lane2, gridSize * 2, gridSize, 1));
-        obstacles.push(new Obstacle(i * gridSize * 6, lanes.lane3, gridSize * 2, gridSize, -2));
-        obstacles.push(new Obstacle(i * gridSize * 6, lanes.lane4, gridSize * 2, gridSize, 2));
-        obstacles.push(new Obstacle(i * gridSize * 6, lanes.lane5, gridSize * 2, gridSize, -1));
+        obstacles.push(new Obstacle(i * gridSize * 8, lanes.lane1, gridSize, gridSize, -0.7, type.turtle));
+        obstacles.push(new Obstacle(i * gridSize * 4, lanes.lane1, gridSize, gridSize, -0.7, type.turtle));
+        obstacles.push(new Obstacle(i * gridSize * 5, lanes.lane2, gridSize * 2, gridSize, 1, type.log));
+        obstacles.push(new Obstacle(i * gridSize * 6, lanes.lane3, gridSize * 2, gridSize, -2, type.car));
+        obstacles.push(new Obstacle(i * gridSize * 6, lanes.lane4, gridSize * 2, gridSize, 2, type.car));
+        obstacles.push(new Obstacle(i * gridSize * 6, lanes.lane5, gridSize * 2, gridSize, -1, type.car));
     }
     return obstacles;
 }
