@@ -1,12 +1,11 @@
 import { state, setState } from './data.js'
-import { gridSize } from './setup.js'
+import { gameHeight, gameWidth, gridSize } from './setup.js'
 import Obstacle from './obstacle.js'
 
 
 export function score() {
-    console.log(state);
     const { score, speed, frog } = state;
-    setState({ score: score + 10, speed: speed + 0.5 });
+    setState({ score: Math.floor(score + 1 * speed ** 3), speed: speed + 0.3 });
     frog.reset();
 }
 
@@ -41,4 +40,23 @@ export function generateObstacles() {
         obstacles.push(new Obstacle(i * gridSize * 6, lanes.lane5, gridSize * 2, gridSize, -1));
     }
     return obstacles;
+}
+
+export function isColliding(frog, obstacle) {
+    return !(
+        frog.x > obstacle.x + obstacle.width ||
+        frog.x + frog.width < obstacle.x ||
+        frog.y > obstacle.y + obstacle.height ||
+        frog.y + frog.height < obstacle.y
+    )
+}
+
+export function drawHud(ctx) {
+    ctx.clearRect(0, 0, gameWidth, gameHeight);
+    ctx.font = '14px Arial';
+    ctx.fillText('Score', 20, 40);
+    ctx.font = '30px Arial';
+    ctx.fillText(state.score, 65, 40);
+    // ctx.font = '12px Arial';
+    // ctx.fillText(`Speed: ${state.speed}`, 20, 60);
 }

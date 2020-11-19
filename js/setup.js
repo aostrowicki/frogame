@@ -26,6 +26,6 @@ canvas4.width = gameWidth;
 canvas4.height = gameHeight;
 
 const canvas5 = document.getElementById('canvas5');
-const ctx5 = canvas5.getContext('2d');
+export const ctx5 = canvas5.getContext('2d');
 canvas5.width = gameWidth;
 canvas5.height = gameHeight;
