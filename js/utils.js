@@ -4,15 +4,15 @@ import Obstacle from './obstacle.js'
 
 
 export function score() {
-    const { score, speed, frog } = state;
-    setState({ score: Math.floor(score + 1 * speed ** 3), speed: speed + 0.3 });
+    const { score, highscore, speed, frog } = state;
+    setState({ score: Math.floor(score + 1 * speed ** 3), speed: speed + 0.3, });
+    state.score > highscore && (setState({ highscore: state.score }) || localStorage.setItem('highscore', state.score));
     frog.reset();
 }
 
 export function reset() {
-    const { frog } = state;
     setState({ score: 0, speed: 1 });
-    frog.reset();
+    state.frog.reset();
 }
 
 export function generateObstacles() {
@@ -53,10 +53,13 @@ export function isColliding(frog, obstacle) {
 
 export function drawHud(ctx) {
     ctx.clearRect(0, 0, gameWidth, gameHeight);
+    ctx.fillStyle = 'rgba(0,0,0,0.6)';
+    ctx.fillRect(0, 0, 120, 90);
+    ctx.fillStyle = 'white';
     ctx.font = '14px Arial';
-    ctx.fillText('Score', 20, 40);
+    ctx.fillText('Score', 15, 40);
     ctx.font = '30px Arial';
-    ctx.fillText(state.score, 65, 40);
-    // ctx.font = '12px Arial';
-    // ctx.fillText(`Speed: ${state.speed}`, 20, 60);
+    ctx.fillText(state.score, 60, 40);
+    ctx.font = '14px Arial';
+    ctx.fillText(`Highscore ${state.highscore}`, 15, 65);
 }

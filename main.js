@@ -9,7 +9,7 @@ const { frog, obstacles } = state;
 // EVENT LISTENERS
 let keys = new Set([]);
 window.addEventListener('keydown', (e) => {
-    if (!keys.has(e.key)) {
+    if (!keys.has(e.key) && ['ArrowUp', 'ArrowDown', 'ArrowRight', 'ArrowLeft'].includes(e.key)) {
         keys.add(e.key);
         frog.moving = 1;
         frog.y < gridSize && e.key === "ArrowUp" ? score() : frog.jump(e.key);     // jump or score
